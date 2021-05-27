@@ -1,5 +1,7 @@
 package kodlamaio.hrms.entities.concretes;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,8 +17,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="job_positions")
-public class JobPosition {
+@Table(name="user_registers")
+public class UserRegister {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
@@ -24,9 +26,18 @@ public class JobPosition {
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="job_name")
-	private String jobName;
+	@Column(name="user_id")
+	private int userId;
 	
+	@Column(name="activision_code")
+	private String activision_code;
 	
+	@Column(name="is_comfirmed")
+	private boolean is_comfirmed;
 	
+	@Column(name="comfirmed_date")
+	private Date comfirmed_date;
+	
+	@Column(name="register_date")
+	private Date register_date;
 }

@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -13,20 +15,20 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@Inheritance(strategy= InheritanceType.JOINED)
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="job_positions")
-public class JobPosition {
-	
+@Table(name="users")
+public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	
-	@Column(name="id")
-	private int id;
+	@Column(name="user_id")
+	private int userId;
 	
-	@Column(name="job_name")
-	private String jobName;
+	@Column(name="eposta")
+	private String eposta;
 	
-	
-	
+	@Column(name="password")
+	private String password;
 }
