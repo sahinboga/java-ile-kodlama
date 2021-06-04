@@ -9,31 +9,31 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kodlamaio.hrms.business.abstracts.JobPositionService;
+import kodlamaio.hrms.business.abstracts.SkillService;
 import kodlamaio.hrms.core.utilities.result.DataResult;
 import kodlamaio.hrms.core.utilities.result.Result;
-import kodlamaio.hrms.entities.concretes.JobPosition;
+import kodlamaio.hrms.entities.concretes.Skill;
+import kodlamaio.hrms.entities.dtos.SkillDisplayDto;
 
 @RestController
-@RequestMapping("/api/jobpositions")
-public class JobPositionController {
+@RequestMapping("/api/skills")
+public class SkillController {
 	
-	private JobPositionService jobPositionService;
+	private SkillService skillService;
 	
 	@Autowired
-	public JobPositionController(JobPositionService jobPositionService) {
+	public SkillController(SkillService skillService) {
 		super();
-		this.jobPositionService = jobPositionService;
-	}
+		this.skillService = skillService;
+	};
 	
-	@GetMapping("/getall")
-	public DataResult<List<JobPosition>> getAll(){
-		
-		return this.jobPositionService.getAll();
+	@GetMapping("/getAllSkill")
+	public DataResult<List<SkillDisplayDto>> getAll() {
+		return this.skillService.getAllDisplay();
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody JobPosition jobPosition) {
-		return this.jobPositionService.add(jobPosition);
+	public Result add(@RequestBody Skill skill) {
+		return this.skillService.add(skill);
 	}
 }

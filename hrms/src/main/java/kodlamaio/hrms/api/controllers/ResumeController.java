@@ -9,31 +9,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kodlamaio.hrms.business.abstracts.JobPositionService;
+import kodlamaio.hrms.business.abstracts.ResumeService;
 import kodlamaio.hrms.core.utilities.result.DataResult;
 import kodlamaio.hrms.core.utilities.result.Result;
-import kodlamaio.hrms.entities.concretes.JobPosition;
+import kodlamaio.hrms.entities.concretes.Resume;
+import kodlamaio.hrms.entities.dtos.ResumeDisplayDto;
+import kodlamaio.hrms.entities.dtos.ResumeForNewDto;
 
 @RestController
-@RequestMapping("/api/jobpositions")
-public class JobPositionController {
+@RequestMapping("/api/resumes")
+public class ResumeController {
 	
-	private JobPositionService jobPositionService;
+	private ResumeService resumeService;
 	
 	@Autowired
-	public JobPositionController(JobPositionService jobPositionService) {
+	public ResumeController(ResumeService resumeService) {
 		super();
-		this.jobPositionService = jobPositionService;
+		this.resumeService = resumeService;
 	}
 	
 	@GetMapping("/getall")
-	public DataResult<List<JobPosition>> getAll(){
-		
-		return this.jobPositionService.getAll();
+	public DataResult<List<ResumeDisplayDto>> getAll(){
+		return this.resumeService.getAllDisplay();
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody JobPosition jobPosition) {
-		return this.jobPositionService.add(jobPosition);
+	public Result add(@RequestBody ResumeForNewDto resumeDto) {
+		return this.resumeService.add(resumeDto);
 	}
 }

@@ -9,31 +9,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kodlamaio.hrms.business.abstracts.JobPositionService;
+import kodlamaio.hrms.business.abstracts.LanguageService;
 import kodlamaio.hrms.core.utilities.result.DataResult;
 import kodlamaio.hrms.core.utilities.result.Result;
-import kodlamaio.hrms.entities.concretes.JobPosition;
+import kodlamaio.hrms.entities.concretes.Language;
 
 @RestController
-@RequestMapping("/api/jobpositions")
-public class JobPositionController {
-	
-	private JobPositionService jobPositionService;
-	
+@RequestMapping("/api/languages")
+public class LanguageController {
+	private LanguageService languageService;
+
 	@Autowired
-	public JobPositionController(JobPositionService jobPositionService) {
-		super();
-		this.jobPositionService = jobPositionService;
+	public LanguageController(LanguageService languageService) {
+		this.languageService = languageService;
 	}
 	
-	@GetMapping("/getall")
-	public DataResult<List<JobPosition>> getAll(){
-		
-		return this.jobPositionService.getAll();
+	@GetMapping("/getAllLanguages")
+	public DataResult<List<Language>> getAll() {
+		return this.languageService.getAll();
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody JobPosition jobPosition) {
-		return this.jobPositionService.add(jobPosition);
+	public Result add(@RequestBody Language language) {
+		return this.languageService.add(language);
 	}
+	
+	
 }
