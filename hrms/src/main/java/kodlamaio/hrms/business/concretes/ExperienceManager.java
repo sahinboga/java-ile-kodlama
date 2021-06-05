@@ -3,6 +3,7 @@ package kodlamaio.hrms.business.concretes;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.ExperienceService;
@@ -39,7 +40,14 @@ public class ExperienceManager implements ExperienceService {
 		}
 		@Override
 		public DataResult<List<ExperienceDisplayDto>> getAllDisplay() {
-			return new SuccessDataResult<List<ExperienceDisplayDto>>(ExperienceDtoconverter.NormalToDisplayDto(this.experienceDao.findAll()),"İş Deneyimi listelendi");
+			return new SuccessDataResult<List<ExperienceDisplayDto>>
+			(ExperienceDtoconverter.NormalToDisplayDto(this.experienceDao.findAll()),"İş Deneyimi listelendi");
+		}
+		@Override
+		public DataResult<List<ExperienceDisplayDto>> getAllSorted() {
+			Sort sorted= Sort.by(Sort.Direction.DESC,"leaveDate");
+			return new SuccessDataResult<List<ExperienceDisplayDto>>
+			(ExperienceDtoconverter.NormalToDisplayDto(this.experienceDao.findAll(sorted)),"Deneyimler tersten sıralandı");
 		}
 
 }

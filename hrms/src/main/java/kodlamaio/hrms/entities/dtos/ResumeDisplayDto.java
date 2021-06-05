@@ -14,12 +14,12 @@ public class ResumeDisplayDto {
 
 	private String firstName;
 	private String lastName;
-	private String schoolName;
-	private String departmentName;
 	private String github;
 	private String linkedin;
 	private String summary;
 	private List<LanguageDisplayDto> languages;
 	private List<ExperienceDisplayDto> experiences;
 	private List<SkillDisplayDto> skills;
+	private List<EducationDisplayDto> educations;
+	
 }

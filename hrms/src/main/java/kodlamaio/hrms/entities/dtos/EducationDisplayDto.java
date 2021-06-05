@@ -1,5 +1,6 @@
 package kodlamaio.hrms.entities.dtos;
 
+import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,11 +9,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ResumeForNewDto {
+public class EducationDisplayDto {
 	
-	private int userId;
-	private String github;
-	private String linkedin;
-	private String summary;
-	private int imageId;
+	private String school;
+	private String department;
+	private int startDate;
+	private int graduationDate;
 }

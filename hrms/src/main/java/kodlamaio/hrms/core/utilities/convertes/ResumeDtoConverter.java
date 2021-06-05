@@ -12,8 +12,8 @@ public class ResumeDtoConverter {
 	
 	public static ResumeForNewDto NormalToForNewDto(Resume normal) {
 		
-		return new ResumeForNewDto(normal.getJobSeeker().getUserId(),normal.getSchool().getId(),normal.getDepartment().getId(),
-									normal.getGithub(),normal.getLinkedin(),normal.getSummary(),normal.getImage().getId());
+		return new ResumeForNewDto(normal.getJobSeeker().getUserId(),normal.getGithub(),normal.getLinkedin(),
+									normal.getSummary(),normal.getImage().getId());
 	}
 	
 	public List<ResumeForNewDto> NormalToForNewDto(List<Resume> resumeList){
@@ -29,8 +29,8 @@ public class ResumeDtoConverter {
 	
 	public static Resume InputToNormalDto(ResumeForNewDto resumeDto) {
 		
-		return new Resume(resumeDto.getSchoolId(),resumeDto.getGithub(),resumeDto.getLinkedin(),
-							resumeDto.getUserId(),resumeDto.getDepartmentId(),resumeDto.getSummary(),resumeDto.getImageId());
+		return new Resume(resumeDto.getGithub(),resumeDto.getLinkedin(),
+							resumeDto.getUserId(),resumeDto.getSummary(),resumeDto.getImageId());
 	}
 	
 	public static List<Resume> InputToNormalDto(List<ResumeForNewDto> dtoList){
@@ -46,10 +46,12 @@ public class ResumeDtoConverter {
 	
 	public static ResumeDisplayDto NormalToDisplayDto(Resume resume) {
 		
-		return new ResumeDisplayDto(resume.getJobSeeker().getFirstName(),resume.getJobSeeker().getLastName(),resume.getSchool().getSchoolName(),
-								resume.getDepartment().getDepartmentName(),resume.getGithub(),resume.getLinkedin(),resume.getSummary(),
-								LanguageDtoConverter.NormalToDisplayDto(resume.getJobSeeker().getLanguages()),ExperienceDtoconverter.NormalToDisplayDto(resume.getJobSeeker().getExperiences()),
-								SkillDtoConverter.NormalToDisplayDto(resume.getJobSeeker().getSkills()));
+		return new ResumeDisplayDto(resume.getJobSeeker().getFirstName(),resume.getJobSeeker().getLastName(),
+								resume.getGithub(),resume.getLinkedin(),resume.getSummary(),
+								LanguageDtoConverter.NormalToDisplayDto(resume.getJobSeeker().getLanguages()),
+								ExperienceDtoconverter.NormalToDisplayDto(resume.getJobSeeker().getExperiences()),
+								SkillDtoConverter.NormalToDisplayDto(resume.getJobSeeker().getSkills()),
+								EducationDtoconverter.NormalToDisplayDto(resume.getJobSeeker().getEducations()));
 	}
 	
 	public static List<ResumeDisplayDto> NormalToDisplayDto(List<Resume> resumeList){

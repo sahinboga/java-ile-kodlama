@@ -21,15 +21,15 @@ import lombok.NoArgsConstructor;
 
 public class Resume {
 	
-	public Resume(int schoolId, String github, String linkedin, int userId, int departmentId,String summary,int imageId) {
+	public Resume( String github, String linkedin, int userId,String summary,int imageId) {
 
-		this.school= new School(schoolId,null,null);
+		//this.school= new School(schoolId,null,null);
 		this.github=github;
 		this.linkedin=linkedin;
 		JobSeeker jobSeeker= new JobSeeker();
 		jobSeeker.setUserId(userId);
 		this.jobSeeker= jobSeeker;
-		this.department=new Department(departmentId,null,null);
+		//this.department=new Department(departmentId,null,null);
 		this.summary=summary;
 		Image image= new Image();
 		image.setId(imageId);
@@ -45,14 +45,6 @@ public class Resume {
 	@ManyToOne()
 	@JoinColumn(name="user_id")
 	private JobSeeker jobSeeker;
-	
-	@ManyToOne()
-	@JoinColumn(name="school_id")
-	private School school;
-	
-	@ManyToOne()
-	@JoinColumn(name="department_id")
-	private Department department;
 	
 	@ManyToOne()
 	@JoinColumn(name="image_id")

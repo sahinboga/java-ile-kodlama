@@ -38,4 +38,10 @@ public class ExperienceController {
 		
 		return this.experienceService.add(experience);
 	}
+	
+	@GetMapping("/getAllSortExperince")
+	public DataResult<List<ExperienceDisplayDto>> getAllSorted(){
+		
+		return this.experienceService.getAllSorted();
+	}
 }

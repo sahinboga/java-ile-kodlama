@@ -9,4 +9,5 @@ import kodlamaio.hrms.entities.dtos.ExperienceDisplayDto;
 public interface ExperienceService extends BaseService<Experience>{
 	
 	public DataResult<List<ExperienceDisplayDto>> getAllDisplay();
+	public DataResult<List<ExperienceDisplayDto>> getAllSorted();
 }
